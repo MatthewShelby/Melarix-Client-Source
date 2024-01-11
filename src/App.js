@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import CourseHome from './component/pages/coursePage/courseHome';
+import MainLayout from './component/pages/template/MainLayout';
+import './asset/style/App.css';
+import './asset/style/card.css';
+import './asset/style/font.css';
+import './asset/style/guide.css';
+import './asset/style/headerfooter.css';
+import './asset/style/index.css';
+import './asset/style/style.css';
+import './asset/style/course.css';
+import './asset/style/article.css';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <CourseHome />
+    </MainLayout>
   );
 }
 

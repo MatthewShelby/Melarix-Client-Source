@@ -1,0 +1,141 @@
+.header-frame {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: var(--dim-gray);
+      justify-content: space-between;
+      display: flex;
+      /* border: 10px solid salmon; */
+}
+
+.header-logo {
+      margin: 12px;
+      /* border: 4px solid var(--nyanza); */
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-family: Poppins;
+}
+
+.connect-btn {
+      margin: 12px;
+      border: 4px solid var(--nyanza);
+      color: var(--nyanza);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1.125rem;
+      font-weight: 400;
+      font-family: Poppins;
+      cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+.sub-title {
+      font-size: 1.2rem;
+}
+
+.footer-frame {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: var(--dim-gray);
+      padding: 4%;
+      font-family: Poppins;
+
+}
+
+.footer-row {
+      width: 92%;
+      justify-content: space-between;
+      display: flex;
+      border-top: 2px solid var(--eerie-black);
+}
+
+.footer-row-center {
+      color: var(--nyanza);
+      width: 92%;
+      text-align: center;
+}
+
+
+
+.sub-input {
+      vertical-align: top;
+      display: inline-flex;
+      text-align: center;
+      height: 64px;
+      width: 30vw;
+}
+
+
+
+.sub-input-text {
+      width: 40vw;
+      font-size: 1.2rem;
+      font-weight: 500;
+      height: inherit;
+      border: 6px solid var(--pistachio);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-color: #656565;
+      color: var(--text-white);
+      box-sizing: border-box;
+      padding-left: 6px;
+}
+
+.sub-input-text:focus {
+      outline: none;
+      border: 6px solid var(--lawn-green);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-color: #ffffff11;
+}
+
+.sub-input-text::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #22222277;
+      opacity: 1;
+      /* Firefox */
+}
+
+.sub-input-btn {
+      background-color: #00000000;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      left: -40px;
+}
+
+
+.foot-link {
+      color: var(--link);
+}
+
+.explore-more {
+      display: block;
+      margin-bottom: 0.3rem;
+}
+
+.explore-link {
+      color: var(--text-white);
+      text-decoration: underline;
+      margin-bottom: 0.3rem;
+      display: block;
+}
+
+.tx-d-none {
+      text-decoration: none;
+}
+
+.op60 {
+      opacity: 60%;
+}
