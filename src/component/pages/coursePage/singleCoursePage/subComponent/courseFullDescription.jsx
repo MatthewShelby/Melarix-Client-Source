@@ -25,8 +25,11 @@ function CourseFullDescription({ text }) {
             }
             setShowMore(!showMore)
       }
+
+
       return (
-            <div validated={true} >
+            // <div validated={true} >
+            <div   >
                   <div className="part1">
                         {/* <p>heightC: {heightC}</p> */}
                         <div dangerouslySetInnerHTML={{ __html: partH }}></div>

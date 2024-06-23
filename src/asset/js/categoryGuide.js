@@ -100,4 +100,8 @@ function getCategoryForBreadcrumb(array) {
       return getCategoryFor(array[0], array[1], array[2])
 }
 
-export { getCategoryForString, getCategoryForBreadcrumb }
+function getAllCategories() {
+      return Categories
+}
+
+export { getCategoryForString, getCategoryForBreadcrumb, getAllCategories }

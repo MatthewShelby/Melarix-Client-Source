@@ -201,12 +201,7 @@ body {
       line-height: 1.5rem;
 }
 
-.td-description {
-      font-weight: 300;
-      font-size: 1.1rem;
-      padding-bottom: 1rem;
-      line-height: 1.5rem;
-}
+
 
 .first-td-desc {
       padding-right: 1rem;
@@ -214,6 +209,29 @@ body {
       justify-content: space-between;
 }
 
+table {
+      display: block;
+      max-width: 100%;
+}
+
+tbody {
+      display: block;
+      max-width: 100%;
+      overflow-x: hidden;
+}
+
+tr {
+      max-width: 100%;
+      overflow-x: auto;
+}
+
+
+.tach-frame {
+      max-width: 100%;
+      display: block;
+}
+
+/* 
 .techs-bar {
       margin-top: 0.5rem;
       width: 100%;
@@ -224,7 +242,7 @@ body {
                   rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.65) 100%);
       -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%,
                   rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 100%);
-}
+} */
 
 .techs-bar::-webkit-scrollbar {
       display: none;
@@ -247,7 +265,9 @@ body {
       font-size: 1.1rem;
       padding-bottom: 1rem;
       line-height: 1.5rem;
+      overflow-x: hidden;
 }
+
 
 .features-li {
       padding: 0.3rem 0px;
@@ -348,6 +368,12 @@ body {
       margin: 4px;
 }
 
+.get-course-btn {
+      display: block;
+      vertical-align: middle;
+      justify-content: center;
+}
+
 .free-access-btn {
       background-color: var(--lawn-green);
       border-radius: 12px;
@@ -368,4 +394,9 @@ body {
 
 .display-block {
       display: block;
+}
+
+.padding-bottom-0 p {
+      padding-bottom: 0px !important;
+      margin-bottom: 0px !important;
 }

@@ -39,7 +39,7 @@ function CourseCard({ course, altKey, handleClick, fReff }) {
                               </div>
                         </div>
                         <div className="techs-bar" title="Technolgies Used in the course">
-                              {course.keywords.map((keyword, i) => (
+                              {course.technologiesUsed.map((keyword, i) => (
                                     <div className="techs" key={i}>{keyword}</div>
                               ))}
                         </div>

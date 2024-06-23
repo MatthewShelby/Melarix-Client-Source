@@ -1,3 +1,6 @@
+html{
+      scroll-behavior: smooth;
+}
 body {
       background-color: var(--eerie-black);
       color: var(--text-white);
@@ -33,4 +36,16 @@ a {
       100% {
             transform: rotate(360deg)
       }
+}
+
+.see-videos-btn{
+      margin-bottom: 2rem;
+      padding: 12px;
+            background-color: #ffffff40;
+            border: none;
+            color: var(--text-white);
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
 }

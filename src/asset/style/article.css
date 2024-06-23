@@ -42,7 +42,7 @@
 }
 
 .article-content-body {
-      padding: 8rem 0rem 1rem 0rem;
+      padding: 8rem 0rem 6rem 0rem;
 }
 
 
@@ -89,4 +89,17 @@
 .article-item-info-description {
       color: var(--text-white);
 
+}
+
+
+.main-title-sub-info-desktop {
+      display: block;
+}
+
+.main-title-sub-info-mobile {
+      display: none;
+}
+
+.date-font-family {
+      font-family: system-ui;
 }

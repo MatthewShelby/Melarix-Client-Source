@@ -4,8 +4,9 @@ import { getDifficulityLevelString, kewordsArrayToString } from "../../../asset/
 import { getCategoryForBreadcrumb } from "@as/js/categoryGuide"
 // import { Person as PersonSchema } from "schema-dts";
 import { Helmet } from "react-helmet";
+import * as Data from "@as/js/data"
 
-
+const baseURL = 'http://localhost:3000/#/'//courseList/development/blockchain/Wallet'
 
 
 
@@ -62,7 +63,7 @@ function CourseHelmet({ course }) {
             }
       }
       if (!course.isAccessibleForFree) json.offers = getOffers(course.acceptedPayments);
-      return WrapperHelmet([json, Breadcrumb(course.category)])
+      return WrapperHelmet([json, Breadcrumb(course.category, 'courseList')])
 }
 
 function ArticleHelmet({ article }) {
@@ -96,7 +97,7 @@ function ArticleHelmet({ article }) {
                   "url": article.thumbnailUrl,
             }]
       }
-      return WrapperHelmet([json, Breadcrumb(article.category)])
+      return WrapperHelmet([json, Breadcrumb(article.category, 'articles')])
 
 }
 
@@ -119,6 +120,36 @@ function VideoHelmet({ video }) {
 
       }
       return WrapperHelmet([json, Breadcrumb(video.parentCourse.category)])
+}
+
+function AboutHelmet() {
+
+      //var res = getMelarixOrganization()
+
+
+
+      var json = {
+
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "Melarix",
+            "alternateName": "melarix.com",
+            "description": `We're here to break the barriers of traditional education, providing you with essential skills to craft your own path in blockchain-based development.
+                  In these early stages, Melarix is diving deep into dApps and web3 development. As we grow, we'll expand our horizons to cover a variety of exciting topics. Join us on this journey, and let's redefine online learning together.
+                  Melarix is more than a platform; it's your key to unlocking the vast potential of blockchain development. Get ready to learn, create, and innovate with us!`,
+            "specialty": "Blockchain",
+            "relatedLink": "https://www.melarix.com/#/about",
+            "about": `We're here to break the barriers of traditional education, providing you with essential skills to craft your own path in blockchain-based development.
+                  In these early stages, Melarix is diving deep into dApps and web3 development. As we grow, we'll expand our horizons to cover a variety of exciting topics. Join us on this journey, and let's redefine online learning together.
+                  Melarix is more than a platform; it's your key to unlocking the vast potential of blockchain development. Get ready to learn, create, and innovate with us!`,
+            "publisher": getMelarixOrganization()
+      }
+
+
+      console.log('before about wrapper:')
+      console.info(json.publisher)
+      return WrapperHelmet([json, strinsgBreadcrumb(['home', 'about', 'about melarix'])])
+
 }
 
 
@@ -233,7 +264,7 @@ function fixDuration(duration) {
       // return res
 }
 
-function Breadcrumb(category) {
+function Breadcrumb(category, controlle) {
       const strings = getCategoryForBreadcrumb(category)
       var json = {
             "@context": "https://schema.org",
@@ -242,17 +273,38 @@ function Breadcrumb(category) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": strings[0],
-                  "item": "https://www.melarix.com/articles/" + strings[0]
+                  "item": baseURL + controlle + '/' + strings[0],
             }, {
                   "@type": "ListItem",
                   "position": 2,
                   "name": strings[1],
-                  "item": "https://www.melarix.com/articles/" + strings[0] + '/' + strings[1]
+                  "item": baseURL + controlle + '/' + strings[0] + '/' + strings[1],
             }, {
                   "@type": "ListItem",
                   "position": 3,
                   "name": strings[2],
-                  "item": "https://www.melarix.com/articles/" + strings[0] + '/' + strings[1] + '/' + strings[2]
+                  "item": baseURL + controlle + '/' + strings[0] + '/' + strings[1] + '/' + strings[2],
+            }]
+      }
+      return json
+}
+function strinsgBreadcrumb(strings) {
+
+      var json = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": strings[0],
+            }, {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": strings[1],
+            }, {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": strings[2],
             }]
       }
       return json
@@ -274,5 +326,70 @@ function AnaliticsTag() {
             </>)
 }
 
+function getMelarixOrganization() {
+      // var org = await Data.getKVData('MelarixOrganizationSchema')
+      // return (org[0].object)
+      var org = {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "002",
+            "name": "Melarix",
+            "url": "https://www.melarix.com/",
+            "logo": "https://www.melarix.com/MelarixLogo.png",
+            "sameAs": [
+                  "https://instagram.com/mela.rix?igshid=MzMyNGUyNmU2YQ==",
+                  "https://discord.gg/BaMGvB63",
+                  "https://www.linkedin.com/company/melarix/",
+                  "https://melarix.medium.com/",
+                  "https://www.youtube.com/@Melarix-com"
+            ],
+            "founder": {
+                  "@context": "https://schema.org",
+                  "@type": "Person",
+                  "@id": "001",
+                  "gender": "male",
+                  "name": "Matthew",
+                  "url": "https://matthewshelby.github.io/portfolio/",
+                  "email": "matthewshelb@gmail.com",
+                  "sameAs": "[https://www.linkedin.com/in/mt-shelby,https://matthewshelby.github.io/portfolio/]",
+                  "familyName": "Shelby",
+                  "alternateName": "Mtthew Shelby",
+                  "jobTitle": "Blockchain Developer"
+            }
+      }
+      return org;
+}
 
-export { ArticleHelmet, CourseHelmet, VideoHelmet }
+function getMatt() {
+      // var matt = await Data.getKVData('MatthewShelby')
+      // return (matt[0].object)
+      var matt = {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "001",
+            "gender": "male",
+            "name": "Matthew",
+            "url": "https://matthewshelby.github.io/portfolio/",
+            "email": "matthewshelb@gmail.com",
+            "sameAs": "[https://www.linkedin.com/in/mt-shelby,https://matthewshelby.github.io/portfolio/]",
+            "familyName": "Shelby",
+            "alternateName": "Mtthew Shelby",
+            "jobTitle": "Blockchain Developer",
+            "alumniOf": {
+                  "@type": "Organization",
+                  "name": [
+                        "Melarix",
+                        "Melarix.com"
+                  ]
+            },
+            "knowsAbout": [
+                  "BLockchain",
+                  "Web3",
+                  "Crypto Currency"
+            ]
+      }
+      return matt
+}
+
+
+export { ArticleHelmet, CourseHelmet, VideoHelmet, AboutHelmet }

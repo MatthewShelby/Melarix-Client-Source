@@ -26,7 +26,7 @@ function BookmarkSign({ courseId }) {
                   <img onClick={() => { bookmarkChange() }}
                         src={marked ? markedIcon : unmarkedIcon}
                         title={marked ? "Course has been marked," : "Bookmark the course for later"}
-                        alt="bookmark icon" className="empty" />
+                        alt="bookmark icon" className="empty" width="16"/>
             </div>
       )
 }

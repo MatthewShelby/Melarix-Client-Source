@@ -9,7 +9,7 @@ function NavBar() {
 
                   <Navbar className="bg-body-tertiary navbar-frame ">
                         <Container className='header-frame' >
-                              <Navbar.Brand href="#home" >
+                              <Navbar.Brand href="/" >
                                     <div className='vm'>
                                           <img
                                                 alt="Melarix Logo"

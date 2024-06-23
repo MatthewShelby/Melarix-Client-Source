@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import * as Data from "../../../../asset/js/data"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import SingleCourse from "./singleCourse"
 import MainLayout from '../../../../component/pages/template/MainLayout';
 import { CourseHelmet } from "../../template/helmet"
@@ -10,6 +10,7 @@ import Loading from "../../../loading";
 function Course() {
       const { id } = useParams();
       const [content, setContent] = useState()
+      const navigate = useNavigate();
 
       useEffect(() => {
             fetchTheCourse(id)
@@ -18,7 +19,11 @@ function Course() {
 
       async function fetchTheCourse(inp) {
             var course = await Data.fetchSingleCourse(inp)
-            console.log(typeof (course[0].createDate))
+            //console.log(typeof (course[0].createDate))
+            if (course.length == 0) {
+                  navigate("/");
+            }
+            console.info(course)
             setContent(course[0])
       }
 
@@ -327,7 +332,9 @@ function Course() {
             <MainLayout>
 
                   {content ?
-                        <><CourseHelmet course={content} /> <SingleCourse courseData={content} /></> : <Loading />}
+                        <><CourseHelmet course={content} />
+                              <SingleCourse courseData={content} /></>
+                        : <Loading />}
             </MainLayout>
 
       )

@@ -5,7 +5,7 @@ import * as Data from "../../../asset/js/data"
 
 
 
-function CourseTable(search) {
+function CourseTable({ search }) {
       const [courses, setCourses] = useState([])
 
       useEffect(() => {

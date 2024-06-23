@@ -26,6 +26,10 @@ const fetchSingleCourse = async (id) => {
 
 async function getVideosFor(ids) {
 
+
+      console.log('Video Request ids: ' + ids)
+
+
       var allExistingVideos = await data.Video;
       var resultVideos = new Array();
       ids.forEach(element => {
@@ -36,6 +40,24 @@ async function getVideosFor(ids) {
 
       console.info(resultVideos)
       return resultVideos
+
+}
+
+async function getAssetsFor(ids) {
+      console.log('Asset Request ids: ' + ids)
+
+      var allExistingAssets = await data.Asset;
+      var resultAssets = new Array();
+
+
+      ids.forEach(element => {
+            resultAssets.push(allExistingAssets.filter(v => v.title == element || v.id == element)[0])
+      });
+
+      console.log('FromDAta Before return Assets[]')
+
+      console.info(resultAssets)
+      return resultAssets
 
 }
 
@@ -55,11 +77,16 @@ async function getVideoAndCourseById(id) {
 
 }
 
+const getKVData = async (key) => {
+      return await data.kvdata.filter(a => a.key == key || a.id == key)
+}
 
 
 
 
 
 
-
-export { fetchCourses, fetchSingleCourse, fetchArticles, fetchSingleArticle, getVideosFor, getVideoById, getVideoAndCourseById }
+export {
+      fetchCourses, fetchSingleCourse, fetchArticles, fetchSingleArticle, getVideosFor, getAssetsFor,
+      getVideoById, getVideoAndCourseById, getKVData
+}

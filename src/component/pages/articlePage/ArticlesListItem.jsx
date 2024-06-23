@@ -6,7 +6,7 @@ function ArticlesListItem({ article }) {
 
 
             return (
-                  <Link to={`/article/${article.title}`} className="no-text-decoration">
+                  <Link to={`/article/${article.title}`} className="no-text-decoration" target="_blank">
                         <div className="article-item-frame">
                               <div className="course-info div-flex">
                                     <div className="article-item-img-frame">

@@ -39,7 +39,20 @@ function SingleCourse({ courseData }) {
                         {courseData.shortDescription}
                   </h2>
 
+                  <div>
+                        <button onClick={() => {
+                              if (showBox === 'display-none') {
+                                    changeAccesssLink()
+                              }
+                              
+                              setTimeout(() => {
+                                    document.getElementById('video-box')?.scrollIntoView()
 
+                              }, 100);
+                        }} className="see-videos-btn">
+                              See Videos List
+                        </button>
+                  </div>
                   <div className="longdescription">
                         <CourseFullDescription text={courseData.courseBody} />
                   </div>
@@ -62,112 +75,113 @@ function SingleCourse({ courseData }) {
                                     Course Details:
                               </div>
 
-                              <div className="body-description">
-
-                                    <table className="content-table">
-                                          <tbody>
-                                                <tr>
-                                                      <td className="td-title">Title</td>
-                                                      <td className="td-description">
-                                                            <div className="first-td-desc">
-                                                                  <span className="f1">{courseData.shortTitle}</span>
-                                                                  <span className="f2">
-
-                                                                        <BookmarkSign courseId={courseData.id} />
-
-                                                                  </span>
-                                                            </div>
 
 
-                                                      </td>
-                                                </tr>
+                              <table className="content-table">
+                                    <tbody>
+                                          <tr>
+                                                <td className="td-title">Title:</td>
+                                                <td className="td-description">
+                                                      <div className="first-td-desc">
+                                                            <span className="f1">{courseData.shortTitle}</span>
+                                                            <span className="f2">
+
+                                                                  <BookmarkSign courseId={courseData.id} />
+
+                                                            </span>
+                                                      </div>
 
 
-                                                <tr>
-                                                      <td className="td-title">Category</td>
-                                                      <td className="td-description"> {getCategoryForString(courseData.category)}
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td className="td-title">Technologies Used</td>
+                                                </td>
+                                          </tr>
 
-                                                      <td className="td-description  ">
+
+                                          <tr>
+                                                <td className="td-title">Category:</td>
+                                                <td className="td-description"> {getCategoryForString(courseData.category)}
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Technologies Used:</td>
+
+                                                <td className="td-description  ">
+                                                      <div className="tach-frame">
                                                             <div className="techs-bar" title="Technolgies Used in the course">
 
                                                                   {courseData.technologiesUsed.map((t, i) => (
                                                                         <div className="techs" key={i}>{t}</div>
                                                                   ))}
 
-                                                            </div>
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td className="td-title">Course Duration</td>
-                                                      <td className="td-description"  > <span title={convertDurationString(courseData.duration)}> {convertDuration(courseData.duration)}  </span>
-                                                            &nbsp;&nbsp; - &nbsp;&nbsp; {courseData.numberOfReleasedVideos} {courseData.numberOfReleasedVideos > 1 ? 'Sessions' : 'Session'}</td>
-                                                </tr>
-                                                <tr>
-                                                      <td className="td-title">Rating</td>
-                                                      <td className="td-description" title="">
-                                                            <RatingStars number={courseData.rating ? courseData.rating : 5} />
-                                                      </td>
-                                                </tr>
+                                                            </div></div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Course Duration:</td>
+                                                <td className="td-description"  > <span title={convertDurationString(courseData.duration)}> {convertDuration(courseData.duration)}  </span>
+                                                      &nbsp;&nbsp; - &nbsp;&nbsp; {courseData.numberOfReleasedVideos} {courseData.numberOfReleasedVideos > 1 ? 'Sessions' : 'Session'}</td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Rating:</td>
+                                                <td className="td-description" title="">
+                                                      <RatingStars number={courseData.rating ? courseData.rating : 5} />
+                                                </td>
+                                          </tr>
 
-                                                <tr className="key-features">
-                                                      <td className="td-title">Key Takeaways</td>
+                                          <tr className="key-features">
+                                                <td className="td-title">Key Takeaways:</td>
+                                                <td className="td-description">
+                                                      <ul>
+                                                            {courseData.keyTakeaways.map((t, i) => (
+                                                                  <li className="features-li" key={i}>
+                                                                        <b>{t.head}:</b>
+                                                                        &nbsp;
+                                                                        {t.body} </li>
+                                                            ))}
+
+                                                      </ul>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Difficulty level:</td>
+                                                <td className="td-description">
+                                                      <DifficultyLevelBox dif={courseData.difficultyLevel} />
+                                                </td>
+                                          </tr>
+                                          {courseData.prerequisites.length > 1 ?
+                                                <tr>
+                                                      <td className="td-title">Prerequisites:</td>
                                                       <td className="td-description">
-                                                            <ul>
-                                                                  {courseData.keyTakeaways.map((t, i) => (
-                                                                        <li className="features-li" key={i}>
-                                                                              <b>{t.head}:</b>
-                                                                              &nbsp;
-                                                                              {t.body} </li>
-                                                                  ))}
-
-                                                            </ul>
+                                                            {courseData.prerequisites}
                                                       </td>
                                                 </tr>
-                                                <tr>
-                                                      <td className="td-title">Difficulty level</td>
-                                                      <td className="td-description">
-                                                            <DifficultyLevelBox dif={courseData.difficultyLevel} />
-                                                      </td>
-                                                </tr>
-                                                {courseData.prerequisites.length > 1 ?
-                                                      <tr>
-                                                            <td className="td-title">Prerequisites</td>
-                                                            <td className="td-description">
-                                                                  {courseData.prerequisites}
-                                                            </td>
-                                                      </tr>
-                                                      : ''}
-                                                <tr>
-                                                      <td className="td-title">Type</td>
-                                                      <td className="td-description"><CourseType courseTypeIndex={courseData.courseType} /></td>
-                                                </tr>
-                                                <tr>
-                                                      <td className="td-title">Teacher</td>
-                                                      <td className="td-description">     <span> {courseData.author.name} </span>
-                                                            {/* <td className="td-description">       - <a href="#">Teacher Profile</a> */}
-                                                      </td>
-                                                </tr>
-                                                <tr>
-                                                      <td className="td-title">Payment Options</td>
-                                                      <td className="td-description">
-                                                            <div className="payments-box">
-                                                                  <PaymentOptions courseAP={courseData.acceptedPayments} isFree={courseData.isAccessibleForFree} accessHandler={changeAccesssLink} />
-                                                            </div></td>
-                                                </tr>
+                                                : ''}
+                                          <tr>
+                                                <td className="td-title">Type:</td>
+                                                <td className="td-description"><CourseType courseTypeIndex={courseData.courseType} /></td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Teacher:</td>
+                                                <td className="td-description">     <span> {courseData.author.name} </span>
+                                                      {/* <td className="td-description">       - <a href="#">Teacher Profile</a> */}
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <td className="td-title">Payment Options:</td>
+                                                <td className="td-description">
+                                                      <div className="payments-box">
+                                                            <PaymentOptions courseAP={courseData.acceptedPayments} isFree={courseData.isAccessibleForFree} accessHandler={changeAccesssLink} />
+                                                      </div></td>
+                                          </tr>
 
 
-                                          </tbody>
-                                    </table>
-                              </div>
+                                    </tbody>
+                              </table>
+
                         </div>
-                        <div className={showBox}  >
+                        <div className={showBox} id="video-box">
 
 
-                              <VideoLinkBox ids={courseData.videos} />
+                              <VideoLinkBox ids={courseData.videos} assetIds={courseData.sideAssets} />
                         </div>
                   </div>
             </div>
