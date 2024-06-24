@@ -66,7 +66,16 @@ function CourseHelmet({ course }) {
                         "endDate": add3Years(new Date(course.createDate)),
                         "startDate": course.createDate
                   }
-            }]
+            }],
+            "courseSchedule": {
+                  "@type": "Schedule",
+                  "startDate": course.createDate,
+                  "repeatFrequency": "P1D",
+                  "repeatCount": 1000,
+                  "startTime": "09:00:00",
+                  "endTime": "10:00:00",
+                  "scheduleTimezone": "Europe/London"
+            }
       }
       if (!course.isAccessibleForFree) { json.offers = getOffers(course.acceptedPayments); } else {
             let freeOffer = JSON.parse(`[{
