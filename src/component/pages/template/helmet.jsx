@@ -75,7 +75,8 @@ function CourseHelmet({ course }) {
                   "startTime": "09:00:00",
                   "endTime": "10:00:00",
                   "scheduleTimezone": "Europe/London"
-            }
+            },
+            "courseWorkload":"Watch videos"
       }
       if (!course.isAccessibleForFree) { json.offers = getOffers(course.acceptedPayments); } else {
             let freeOffer = JSON.parse(`[{
