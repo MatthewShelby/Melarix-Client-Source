@@ -61,12 +61,21 @@ function CourseHelmet({ course }) {
                   "courseSchedule": {
                         "@type": "Schedule",
                         "duration": "3Y",
+                        "repeatFrequency": "Monthly",
+                        "repeatCount": 36,
                         "endDate": add3Years(new Date(course.createDate)),
                         "startDate": course.createDate
                   }
             }]
       }
-      if (!course.isAccessibleForFree) json.offers = getOffers(course.acceptedPayments);
+      if (!course.isAccessibleForFree) { json.offers = getOffers(course.acceptedPayments); } else {
+            json.offers = `[{
+                              "@type": "Offer",
+                              "category": "Free",
+                              "priceCurrency": "BTC",
+                              "price": 0
+                        }]`
+      }
       return WrapperHelmet([json, Breadcrumb(course.category, 'courseList')])
 }
 
