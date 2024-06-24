@@ -55,12 +55,16 @@ function CourseHelmet({ course }) {
             "image": course.mainImage,
             "description": course.schemaDescription,
             "url": course.url,
-            "hasCourseInstance": {
+            "hasCourseInstance": [{
                   "@type": "CourseInstance",
                   "courseMode": "online",
-                  "endDate": add3Years(new Date(course.createDate)),
-                  "startDate": course.createDate
-            }
+                  "courseSchedule": {
+                        "@type": "Schedule",
+                        "duration": "3Y",
+                        "endDate": add3Years(new Date(course.createDate)),
+                        "startDate": course.createDate
+                  }
+            }]
       }
       if (!course.isAccessibleForFree) json.offers = getOffers(course.acceptedPayments);
       return WrapperHelmet([json, Breadcrumb(course.category, 'courseList')])
