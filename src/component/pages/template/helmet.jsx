@@ -69,12 +69,14 @@ function CourseHelmet({ course }) {
             }]
       }
       if (!course.isAccessibleForFree) { json.offers = getOffers(course.acceptedPayments); } else {
-            json.offers = `[{
-                              "@type": "Offer",
-                              "category": "Free",
-                              "priceCurrency": "BTC",
-                              "price": 0
-                        }]`
+            let freeOffer = JSON.parse(`[{
+            "@type": "Offer",
+            "price": 0,
+            "priceCurrency": "USDT",
+            "availability": "https://schema.org/InStock",
+            "category": "Free-Offer"}]`)
+
+            json.offers = getOffers(freeOffer)
       }
       return WrapperHelmet([json, Breadcrumb(course.category, 'courseList')])
 }
